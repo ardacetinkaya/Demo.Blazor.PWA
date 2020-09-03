@@ -1,0 +1,31 @@
+﻿@page "/"
+@inject Blazor.PWA.AppState State
+<h1>Hello, world!</h1>
+
+Welcome to your PWA app.
+@State.CurrentState
+<Blazor.PWA.Components.Status>
+    <Online>
+        <p class="text-success">You are online</p>
+    </Online>
+    <Offline>
+        <p class="text-danger">You are offline</p>
+    </Offline>
+</Blazor.PWA.Components.Status>
+
+<Blazor.PWA.Components.ExchangeRate></Blazor.PWA.Components.ExchangeRate>
+<hr>
+<p><strong>Version:</strong> @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription;</p>
+<p><strong>OS:</strong> @System.Runtime.InteropServices.RuntimeInformation.OSDescription;</p>
+
+@code {
+    protected override void OnInitialized()
+    {
+        State.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        State.OnChange -= StateHasChanged;
+    }
+}

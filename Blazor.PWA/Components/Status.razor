@@ -1,0 +1,11 @@
+@using Blazor.PWA.Components
+@inject Blazor.PWA.AppState State
+
+@if (IsOnline)
+{
+    @Online
+}
+else
+{
+    @Offline
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Blazor.PWA",
+  "short_name": "Blazor.PWA",
+  "description": "Simple demonstration for Progressive Web App(PWA) with Blazor Webassembly ",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#03173d",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

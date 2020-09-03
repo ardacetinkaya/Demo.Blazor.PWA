@@ -1,0 +1,16 @@
+@using System.Net.Http
+@inject HttpClient Http
+@inject Blazor.PWA.AppState State
+
+
+<p><strong>1 TRY</strong> is;</p>
+<ul>
+@if(EUR.HasValue){
+    <li> <p><strong>EUR:</strong> @EUR.ToString()</p></li>   
+}
+@if(USD.HasValue){
+    <li><p><strong>USD:</strong> @USD.ToString()</p></li>
+}
+</ul>
+
+<p><small><em>* Rates are fetched via https://exchangeratesapi.io/</em></small></p>

@@ -1,0 +1,23 @@
+name: blazorpwa
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100-preview.8.20417.9
+    - name: Publish with dotnet
+      run: dotnet publish Blazor.PWA/Blazor.PWA.csproj --configuration Release --output build
+    - uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+      with:
+        source_dir: 'build/wwwroot'
+        container_name: '$web'
+        connection_string: ${{ secrets.ConnectionString }}
+        sync: true
