@@ -13,8 +13,8 @@ namespace Blazor.PWA.Components
         [Parameter]
         public RenderFragment Offline { get; set; }
 
-        public double? EUR { get; set; }
-        public double? USD { get; set; }
+        public decimal? EUR { get; set; }
+        public decimal? USD { get; set; }
         protected override async Task OnInitializedAsync()
         {
             try

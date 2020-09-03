@@ -13,9 +13,9 @@ namespace Blazor.PWA.Components.Models
 
     public partial class Rates
     {
-        public double Eur { get; set; }
+        public decimal Eur { get; set; }
 
-        public double Usd { get; set; }
-        public double Try { get; set; }
+        public decimal Usd { get; set; }
+        public decimal Try { get; set; }
     }
 }

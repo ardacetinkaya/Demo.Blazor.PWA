@@ -6,10 +6,10 @@
 <p><strong>1 TRY</strong> is;</p>
 <ul>
 @if(EUR.HasValue){
-    <li> <p><strong>EUR:</strong> @EUR.ToString()</p></li>   
+    <li> <p><strong>EUR:</strong> @string.Format("{0:N2}", EUR) </p></li>   
 }
 @if(USD.HasValue){
-    <li><p><strong>USD:</strong> @USD.ToString()</p></li>
+    <li><p><strong>USD:</strong> @string.Format("{0:N2}", USD)</p></li>
 }
 </ul>
 
