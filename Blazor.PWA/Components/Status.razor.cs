@@ -4,14 +4,12 @@ namespace Blazor.PWA.Components
     using Microsoft.AspNetCore.Components;
     using Microsoft.JSInterop;
 
-    public partial class Status : ComponentBase, System.IDisposable
+    public partial class Status
     {
 
         [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
-
-        [Inject]
         protected NetworkStateInterop Interop { get; set; }
+        
         public bool IsOnline { get; protected set; } = true;
 
         [Parameter]
@@ -24,11 +22,6 @@ namespace Blazor.PWA.Components
         protected override async Task OnInitializedAsync()
         {
             await Interop.InitializeAsync(OnStatusChanged);
-        }
-
-
-        public void Dispose()
-        {
         }
 
         private void OnStatusChanged(bool isOnline)
