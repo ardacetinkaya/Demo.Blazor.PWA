@@ -1,16 +1,19 @@
 @using System.Net.Http
+@using System.Globalization
 @inject HttpClient Http
-@inject Blazor.PWA.AppState State
 
 
-<p><strong>1 TRY</strong> is;</p>
+<p>Today <strong>1 TRY</strong> is;</p>
 <ul>
 @if(EUR.HasValue){
-    <li> <p><strong>EUR:</strong> @string.Format("{0:N2}", EUR) </p></li>   
+    <li> <p><strong>EUR:</strong> @string.Format("{0:N4}", EUR) </p></li>   
 }
 @if(USD.HasValue){
-    <li><p><strong>USD:</strong> @string.Format("{0:N2}", USD)</p></li>
+    <li><p><strong>USD:</strong> @string.Format("{0:N4}", USD)</p></li>
 }
 </ul>
 
+<p><small><em>* Last update: @LastUpdate.ToString("T",CultureInfo.InvariantCulture)</em></small></p>
 <p><small><em>* Rates are fetched via https://exchangeratesapi.io/</em></small></p>
+
+<button class="btn btn-primary" @onclick="RefreshRates">Refresh</button>

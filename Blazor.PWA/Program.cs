@@ -16,7 +16,6 @@ namespace Blazor.PWA
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://api.exchangeratesapi.io/") });
             builder.Services.AddTransient<NetworkStateInterop>();
-            builder.Services.AddSingleton<AppState>();
 
             await builder.Build().RunAsync();
         }

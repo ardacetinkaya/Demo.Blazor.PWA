@@ -4,18 +4,23 @@ namespace Blazor.PWA.Components
     using Microsoft.AspNetCore.Components;
     using System.Net.Http.Json;
     using Blazor.PWA.Components.Models;
+    using Microsoft.AspNetCore.Components.Web;
+    using System;
 
-    public partial class ExchangeRate : ComponentBase, System.IDisposable
+    public partial class ExchangeRate : System.IDisposable
     {
-        [Parameter]
-        public RenderFragment Online { get; set; }
-
-        [Parameter]
-        public RenderFragment Offline { get; set; }
-
         public decimal? EUR { get; set; }
         public decimal? USD { get; set; }
+
+        public DateTime LastUpdate { get; set; }
         protected override async Task OnInitializedAsync()
+        {
+            await GetRates();
+            LastUpdate = DateTime.Now;
+
+        }
+
+        private async Task GetRates()
         {
             try
             {
@@ -24,18 +29,21 @@ namespace Blazor.PWA.Components
 
                 EUR = eur?.Rates?.Try;
                 USD = usd?.Rates?.Try;
-
             }
             catch (System.Exception ex)
             {
                 System.Console.WriteLine($"ERROR - {ex.Message}");
             }
-
         }
-
         public void Dispose()
         {
 
+        }
+        private async Task RefreshRates(MouseEventArgs e)
+        {
+            await GetRates();
+            LastUpdate = DateTime.Now;
+            StateHasChanged();
         }
 
     }

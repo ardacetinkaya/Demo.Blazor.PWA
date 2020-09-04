@@ -3,7 +3,7 @@ namespace Blazor.PWA.Components
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
     using Microsoft.JSInterop;
-    
+
     public partial class Status : ComponentBase, System.IDisposable
     {
 
@@ -36,7 +36,7 @@ namespace Blazor.PWA.Components
             if (IsOnline != isOnline)
             {
                 IsOnline = isOnline;
-                State.SetState(isOnline ? "Active" : "Passive");
+                StateHasChanged();
             }
         }
     }
