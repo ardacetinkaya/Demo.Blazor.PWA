@@ -22,6 +22,8 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0.100-preview.8.20417.9
+      - name: Publish with dotnet
+        run: dotnet publish Blazor.PWA/Blazor.PWA.csproj --configuration Release --output build
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
